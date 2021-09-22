@@ -1,0 +1,25 @@
+{% extends "myaccount/base.html" %}
+{%load static%}
+{% load widget_tweaks %}
+{% block title %}
+    Zero credits alert
+{% endblock %}
+{% block content %}
+<div class="card-header text-center"><span class="splash-description">Your free extraction limit exceeds 5.
+Please proceed to pay for credits</span></div>
+    <div class="card-body">
+     
+       <p><a href="{%url 'payment:process_payment' amount=10  %}">Pay for onetime </a></p>
+     <p><a href="{%url 'payment:process_payment' amount=30  %}">Pay for monthly plan</a></p>
+      <p><a href="{%url 'payment:process_payment' amount=100 %}">Pay for yearly plan</a></p>
+
+    </div>
+
+<div class="card-footer bg-white p-0  ">
+                <div class="card-footer-item card-footer-item-bordered">
+                    <a href="{%url 'scraper:dashboard'%}" class="footer-link">Cancel</a></div>
+
+            </div>
+
+{% endblock %}
+

@@ -1,0 +1,312 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+    <!-- Header Section Start -->
+    <header id="home" class="hero-area">    
+      <div class="overlay">
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+          <a href="index.html" class="navbar-brand"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#home">Home</a>
+              </li>
+             <li class="nav-item">
+                <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+              </li>
+                 {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="{% url 'scraper:dashboard' %}">Dashboard</a>
+              </li>
+                     <li class="nav-item">
+                <a class="nav-link page-scroll" href="{% url 'myaccount:logout' %}">Logout</a>
+              </li>
+                 {% else %}
+                 <li class="nav-item">
+                <a class="nav-link page-scroll" href="{% url 'myaccount:login' %}">Login</a>
+              </li>
+                       <li class="nav-item">
+                <a class="nav-link page-scroll" href="{% url 'myaccount:signup' %}">Signup</a>
+              </li>
+                 {% endif %}
+
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#contact">Contact</a>
+              </li> 
+
+            </ul>
+          </div>
+        </div>
+      </nav>  
+      <div class="container">      
+        <div class="row space-100">
+          <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="contents">
+              <h2 class="head-title">Twitter data extractor<br></h2>
+              <p>Extract tweets related to any keyword </p>
+
+
+              <div class="header-button">
+                <a href="
+                        {% if user.is_authenticated %}
+                            {% url 'scraper:dashboard' %}
+                        {% else %}
+                            {% url 'myaccount:signup' %}
+                        {% endif %}
+                        " class="btn btn-border-filled">Get Started</a>
+
+                <a href="#contact" class="btn btn-border page-scroll">Contact Us</a>
+
+              </div>
+             <p> <a href="{% static 'home/file/sample_tweets_data.csv' %}" class="btn ">Download sample data</a></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-xs-12 p-0">
+            <div class="intro-img">
+
+            </div>
+          </div>
+        </div> 
+      </div>             
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Our Pricing Plan Section Start -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <!-- Start Row -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pricing-text section-header text-center">
+              <div>
+                <h2 class="section-title">Pricing Plans</h2>
+                <div class="desc-text">
+{#                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>#}
+{#                  <p>eiusmod tempor incididunt ut labore et dolore.</p>#}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- End Row -->
+        <!-- Start Row -->
+        <div class="row pricing-tables">
+         <!--  Start Col -->
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="pricing-table text-center">
+              <div class="pricing-details">
+                <h3>Free</h3>
+                <h1><span>$</span>00</h1>
+                <ul>
+                  <li>5 extractions</li>
+                  <li>Limit of 1000 tweets</li>
+
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href=><a href="{%url 'scraper:dashboard'%}" class="btn btn-border">Purchase</a>
+              </div>
+            </div>
+          </div>
+           <!--  End Col -->
+         <!--  Start Col -->
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="pricing-table text-center">
+              <div class="pricing-details">
+                <h3>One time payment</h3>
+                <h1><span>$</span>10</h1>
+                <ul>
+                 <li>1 extraction</li>
+                  <li>Unlimited tweets </li>
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href=><a href="{%url 'payment:process_payment' amount=10  %}" class="btn btn-common">Purchase</a>
+              </div>
+            </div>
+          </div>
+           <!--  End Col -->
+         <!--  Start Col -->
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="pricing-table text-center">
+              <div class="pricing-details">
+                <h3>Monthly plan</h3>
+                <h1><span>$</span>30</h1>
+                <ul>
+                  <li>30 Extractions</li>
+                  <li>Unlimited tweets</li>
+
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href=><a href="{%url 'payment:process_payment' amount=30  %}" class="btn btn-border">Purchase</a>
+              </div>
+            </div>
+          </div>
+           <!--  End Col -->
+            <!--  Start Col -->
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="pricing-table text-center">
+              <div class="pricing-details">
+                <h3>Yearly plan</h3>
+                <h1><span>$</span>100</h1>
+                <ul>
+                  <li>100 Extractions</li>
+                  <li>Unlimited </li>
+
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href=><a href="{%url 'payment:process_payment' amount=100  %}" class="btn btn-border">Purchase</a>
+              </div>
+            </div>
+          </div>
+           <!--  End Col -->
+
+
+        </div>
+        <!-- End Row -->
+      </div>
+    </section>
+    <!-- Our Pricing Plan Section End -->
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+      <!-- Container Starts -->
+      <div class="container">
+        <!-- Start Row -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="contact-text section-header text-center">  
+              <div>   
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="desc-text">
+
+                </div>
+              </div> 
+            </div>
+          </div>
+
+        </div>
+        <!-- End Row -->
+        <!-- Start Row -->
+        <div class="row">
+          <!-- Start Col -->
+          <div class="col-lg-6 col-md-12">
+          {% include "home/form.html" %}
+          </div>
+          <!-- End Col -->
+          <!-- Start Col -->
+          <div class="col-lg-1">
+            
+          </div>
+          <!-- End Col -->
+          <!-- Start Col -->
+          <div class="col-lg-4 col-md-12">
+            <div class="contact-img">
+              <img src ="{% static 'home/img/contact/01.png' %}" class="img-fluid" alt="">
+            </div>
+          </div>
+          <!-- End Col -->
+          <!-- Start Col -->
+          <div class="col-lg-1">
+          </div>
+          <!-- End Col -->
+
+        </div>
+        <!-- End Row -->
+      </div>
+    </section>
+    <!-- Contact Us Section End -->
+
+    <!-- Footer Section Start -->
+    <footer>
+      <!-- Footer Area Start -->
+      <section id="footer-Content">
+        <div class="container">
+
+        </div>
+        <!-- Copyright Start  -->
+
+        <div class="copyright">
+          <div class="container">
+            <!-- Star Row -->
+{#            <div class="row">#}
+{#              <div class="col-md-12">#}
+{#                <div class="site-info text-center">#}
+{#                  <p>Crafted by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>#}
+{#                </div>              #}
+{#                #}
+{#              </div>#}
+{#              <!-- End Col -->#}
+{#            </div>#}
+            <!-- End Row -->
+          </div>
+        </div>
+      <!-- Copyright End -->
+      </section>
+      <!-- Footer area End -->
+      
+    </footer>
+    <!-- Footer Section End --> 
+
+
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top">
+      <i class="lni-chevron-up"></i>
+    </a> 
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src ="{% static 'home/js/jquery-min.js' %}"></script>
+    <script src ="{% static 'home/js/popper.min.js' %}"></script>
+    <script src ="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src ="{% static 'home/js/jquery.nav.js' %}"></script>    
+    <script src ="{% static 'home/js/scrolling-nav.js' %}"></script>    
+    <script src ="{% static 'home/js/jquery.easing.min.js' %}"></script>     
+    <script src ="{% static 'home/js/nivo-lightbox.js' %}"></script>     
+    <script src ="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>      
+    <script src ="{% static 'home/js/main.js' %}"></script>
+    <!-- Start of Async Drift Code -->
+<script>
+"use strict";
+
+!function() {
+  var t = window.driftt = window.drift = window.driftt || [];
+  if (!t.init) {
+    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n = Array.prototype.slice.call(arguments);
+        return n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+      var i = document.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(o, i);
+    };
+  }
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('mbpa3g5e486a');
+</script>
+<!-- End of Async Drift Code -->
+ {% endblock %}

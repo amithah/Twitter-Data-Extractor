@@ -1,0 +1,112 @@
+{%load static%}
+{% load widget_tweaks %}
+{% load socialaccount %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Signup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'myaccount/assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+    <link href="{% static 'myaccount/assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myaccount/assets/libs/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'myaccount/assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    </style>
+</head>
+<!-- ============================================================== -->
+<!-- signup form  -->
+<!-- ============================================================== -->
+
+<body>
+    <!-- ============================================================== -->
+    <!-- signup form  -->
+    <!-- ============================================================== -->
+    <div class="splash-container" %}>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-1">Registrations Form</h3>
+                <p>Please enter your user information.</p>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'myaccount:signup' %}">
+                       {% csrf_token %}
+
+                        {% for hidden in form.hidden_fields %}
+                          {{ hidden }}
+                        {% endfor %}
+                <div class="form-group">
+                    {% render_field form.username|append_attr:"class:form-control form-control-lg" id="username" type="text" placeholder="Username" %}
+                    {% for error in field.errors %}
+                     <span class="help-block">{{ error }}</span>
+                     {% endfor %}
+                </div>
+                <div class="form-group">
+                     {% render_field form.email|append_attr:"class:form-control form-control-lg" id="email" type="email" placeholder="E-mail"%}
+                    {% for error in field.errors %}
+                     <span class="help-block">{{ error }}</span>
+                     {% endfor %}
+                </div>
+                <div class="form-group">
+                   {% render_field form.password1|append_attr:"class:form-control form-control-lg" id="password1" type="password" placeholder="Password"%}
+                 {{ field.help_text }}
+                     {% for error in field.errors %}
+                     <span class="help-block">{{ error }}</span>
+                     {% endfor %}
+                </div>
+                <div class="form-group">
+                     {% render_field form.password2|append_attr:"class:form-control form-control-lg" id="password2" type="password" placeholder="Confirm password"%}
+
+                     {% for error in field.errors %}
+                     <span class="help-block">{{ error }}</span>
+                     {% endfor %}
+
+
+                </div>
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <p> {{ error }} </p>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+              <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+     </form>
+
+                <div class="form-group row pt-2">
+                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                        <p>or</p>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                        <button class="btn btn-block btn-social btn-google " type="button">
+                            <a href="{% provider_login_url 'google' %}">Sign up with Google</a>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <p>Already member? <a href="{% url 'myaccount:login' %}" class="text-secondary">Login Here.</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+ 
+</html>

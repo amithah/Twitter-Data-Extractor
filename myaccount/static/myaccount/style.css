@@ -1,0 +1,50 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    height: 100%;
+}
+h1{
+    color: #0092ff;
+}
+
+.colone{
+background-color: blue;
+    width: 50%;
+    height: 100vh;
+}
+.coltwo{
+        width: 50%;
+        height: 100vh;
+    }
+.mycol{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+input{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 24px;
+    line-height: 1;
+    outline: 0;
+    color: #061027;
+}
+label{
+    color: #061027;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    width: 100%;
+    font-weight: 600;
+}
+button{
+    color: darkblue;
+}

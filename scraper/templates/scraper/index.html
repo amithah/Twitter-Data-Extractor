@@ -1,0 +1,105 @@
+{% extends 'scraper/base.html' %}
+{%load static%}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+        {% block title %}
+        Twitter data extractor
+    {% endblock %}
+{% block content %}
+
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                <div class="row">
+                    <div class="col-xl-10">
+                        <!-- ============================================================== -->
+                        <!-- pageheader  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-header">
+                                    <h2 class="pageheader-title">Welcome to Twitter Data Extractor Dashboard </h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end pageheader  -->
+                        <!-- ============================================================== -->
+                        <div class="page-section" id="overview">
+                            <!-- ============================================================== -->
+                            <!-- overview  -->
+                            <!-- ============================================================== -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h2>Request twitter data</h2>
+                                    <p class="lead">Please fill the below form to mention your requirement </p>
+
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end overview  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- basic form  -->
+                        <!-- ============================================================== -->
+                        {% if  limit == 0 %}
+                            <p class="warning">Your extraction limit reached.You have to buy more credits</p>
+                        {% else%}
+                            <p class="warning">Your credit is {{ credit }}. You have {{ limit }} extractions left.</p>
+
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="basicform">
+<!--                                    <h3 class="section-title">Basic Form Elements</h3>-->
+                                    <p></p>
+                                </div>
+                                <div class="card">
+                                    <h5 class="card-header">Tweets extraction Form</h5>
+                                    <div class="card-body">
+                                              {% include "scraper/form.html" %}
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- ============================================================== -->
+                        <!-- end basic form  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+
+                    </div>
+                    <!-- ============================================================== -->
+
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Twitter Data extractor
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+{#                            <div class="text-md-right footer-links d-none d-sm-block">#}
+{#                                <a href="javascript: void(0);">About</a>#}
+{#                                <a href="javascript: void(0);">Support</a>#}
+{#                                <a href="javascript: void(0);">Contact Us</a>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+
+{% endblock %}

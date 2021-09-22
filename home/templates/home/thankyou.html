@@ -1,0 +1,24 @@
+{% extends "myaccount/base.html" %}
+{%load static%}
+{% block title %}
+    Twitter data extractor: Form submission
+{% endblock %}
+{% block content %}
+
+    <div class="card-header text-center"><span class="splash-description"></span></div>
+    <div class="card-body">
+  <p>
+    Your message has been submitted. We will contact you as soon as possible.
+ <p>Thank you</p>
+  </p>
+
+    </div>
+      <div class="card-footer bg-white p-0  ">
+                <div class="card-footer-item card-footer-item-bordered">
+
+                     <a href="{%url 'home:index'%}" class="footer-link">Go back to home page</a>
+                </div>
+
+
+      </div>
+{% endblock %}

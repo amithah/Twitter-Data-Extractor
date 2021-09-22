@@ -1,0 +1,107 @@
+{%load static%}
+{% load widget_tweaks %}
+{% load socialaccount %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'myaccount/assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+    <link href="{% static 'myaccount/assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myaccount/assets/libs/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'myaccount/assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================== -->
+    <!-- login page  -->
+    <!-- ============================================================== -->
+    <div class="splash-container">
+        <div class="card ">
+            <div class="card-header text-center"><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-body">
+
+                <form method="post" action="{% url 'myaccount:login' %}">
+                       {% csrf_token %}
+
+                        {% for hidden in form.hidden_fields %}
+                          {{ hidden }}
+                        {% endfor %}
+                        <div class="form-group">
+
+                           {% render_field form.username|append_attr:"class:form-control form-control-lg" id="username" type="text" placeholder="Username" %}
+
+                        </div>
+                        <div class="form-group">
+                           {% render_field form.password|append_attr:"class:form-control form-control-lg" id="password" type="password" placeholder="Password"%}
+
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                 {% render_field form.remember_me|append_attr:"class:custom-control-input" type="checkbox"%}
+                                <span class="custom-control-label">Remember Me</span>
+                            </label>
+                        </div>
+     {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                </form>
+                      <div class="form-group row pt-2">
+                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                        <p>or</p>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                        <button class="btn btn-block btn-social btn-google " type="button">
+                            <a href="{% provider_login_url 'google' %}">Login with Google</a>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-footer bg-white p-0  ">
+                <div class="card-footer-item card-footer-item-bordered">
+                    <a href="{%url 'myaccount:signup'%}" class="footer-link">Create An Account</a></div>
+                <div class="card-footer-item card-footer-item-bordered">
+                    <a href="{% url 'myaccount:password_reset' %}" class="footer-link">Forgot Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- ============================================================== -->
+    <!-- end login page  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static 'myaccount/assets/vendor/jquery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'myaccount/assets/vendor/bootstrap/js/bootstrap.bundle.js'%}"></script>
+</body>
+ 
+</html>

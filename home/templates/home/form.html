@@ -1,0 +1,43 @@
+{% load widget_tweaks %}
+
+
+<form id="contactForm" method="post" action="{% url 'home:index' %}">
+    {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    {% render_field form.name|append_attr:"class:form-control" type="text" id="name" name="name" placeholder="Name"%}
+
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                     {% render_field form.subject|append_attr:"class:form-control" type="text" placeholder="Subject" id="msg_subject" %}
+
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                    {% render_field form.email|append_attr:"class:form-control" type="email"  id="email" name="email" placeholder="Email"%}
+
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                    {% render_field form.message|append_attr:"class:form-control" id="message"  name="message" placeholder="Write Message" %}
+
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="submit-button">
+                     <button class="btn btn-common" id="submit"  type="submit" >Submit</button>
+
+                  <div id="msgSubmit" class="h3 hidden"></div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </form>
