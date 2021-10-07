@@ -5,7 +5,7 @@ from .forms import ContactForm
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from twitter_data_extractor.settings.dev import DEFAULT_FROM_EMAIL,EMAIL_HOST_USER
+from twitter_data_extractor.settings.prod import DEFAULT_FROM_EMAIL,EMAIL_HOST_USER
 
 
 def home(request):

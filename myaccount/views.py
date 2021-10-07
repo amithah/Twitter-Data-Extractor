@@ -5,7 +5,7 @@ from .forms import LoginForm
 from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm
 from django.contrib import messages
-from twitter_data_extractor.settings.dev import DEFAULT_FROM_EMAIL,EMAIL_HOST_USER
+from twitter_data_extractor.settings.prod import EMAIL_HOST_USER
 
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
