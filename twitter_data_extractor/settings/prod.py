@@ -5,7 +5,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['twitter-data-extractor.herokuapp.com',
                  '0.0.0.0', 'localhost',
-                 'ec2-3-83-139-94.compute-1.amazonaws.com','3.83.139.94']
+                 '.ec2-3-83-139-94.compute-1.amazonaws.com','3.83.139.94']
 
 
 DATABASES = {
