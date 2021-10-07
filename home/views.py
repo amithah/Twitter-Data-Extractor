@@ -5,7 +5,7 @@ from .forms import ContactForm
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from twitter_data_extractor.settings.dev import DEFAULT_FROM_EMAIL
+from twitter_data_extractor.settings.dev import DEFAULT_FROM_EMAIL,EMAIL_HOST_USER
 
 
 def home(request):
@@ -13,7 +13,8 @@ def home(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             contact = form.save()
-            subject, from_email, to = 'Contact form message', DEFAULT_FROM_EMAIL, 'amithah.nithin@gmail.com'
+            to= EMAIL_HOST_USER
+            subject, from_email= 'Contact form message', DEFAULT_FROM_EMAIL
 
             html_content = render_to_string('home/email.html', {'contact': contact})  # render with dynamic value
             text_content = strip_tags(html_content)  # Strip the html tag. So people can see the pure text at least.

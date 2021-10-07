@@ -5,7 +5,7 @@ from .forms import LoginForm
 from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm
 from django.contrib import messages
-
+from twitter_data_extractor.settings.dev import DEFAULT_FROM_EMAIL,EMAIL_HOST_USER
 
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
@@ -83,7 +83,7 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         # if valid set active true
         CustomUser.objects.filter(username=user.username).update(is_active=True)
-        subject, from_email, to = 'Account confirmation', 'amithah.nithin@gmail.com', 'amithah.nithin@gmail.com'
+        subject, from_email, to = 'Account confirmation', EMAIL_HOST_USER, EMAIL_HOST_USER
         html_content = render_to_string('myaccount/confirm_email.html', {'user':user})  # render with dynamic value
         text_content = strip_tags(html_content)  # Strip the html tag. So people can see the pure text at least.
 

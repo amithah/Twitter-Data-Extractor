@@ -3,10 +3,15 @@ from .base import *
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'fe3620b47bd8.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='ku&rmhu1ag6*')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
