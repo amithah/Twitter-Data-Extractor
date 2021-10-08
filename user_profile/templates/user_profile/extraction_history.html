@@ -64,7 +64,7 @@
                                             <td>
                                                 {% if job.result %}
                                                 <a href="{% url 'user_profile:download' job.result.result_file.path%}">
-                                                <button class="btn  mr-3"><i class="fa-download">Download</i></button>
+                                                <button class="btn btn-primary mr-3">Download</button>
                                                     {% else %}
                                                     Processing.Please wait...
                                                     {% endif %}
