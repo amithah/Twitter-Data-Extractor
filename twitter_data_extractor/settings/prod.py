@@ -20,14 +20,13 @@ DATABASES = {
 }
 
 
-SECRET_KEY = os.environ['SECRET_KEY']
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+EMAIL_HOST_USER =  os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD =  os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL =  os.getenv("DEFAULT_FROM_EMAIL")
 
 
 
 # django-paypal settings
-PAYPAL_RECEIVER_EMAIL = os.environ.get('PAYPAL_RECEIVER_EMAIL')  # refers to the email used to create the PayPal myaccount
+PAYPAL_RECEIVER_EMAIL =os.getenv("PAYPAL_RECEIVER_EMAIL")  # refers to the email used to create the PayPal myaccount
 
 PAYPAL_TEST = True  # whether you want to use the live or sandbox myaccount
