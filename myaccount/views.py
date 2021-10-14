@@ -35,7 +35,7 @@ def user_login(request):
                 messages.error(request, 'Invalid username or password')
                 return redirect('myaccount:login')
     else:
-        form = LoginForm(initial={'username':'test_user','password':'1234@abc'})
+        form = LoginForm()
     return render(request, 'myaccount/login.html', {'form': form})
 
 
